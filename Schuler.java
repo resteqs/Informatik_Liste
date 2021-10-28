@@ -18,7 +18,7 @@ public class Schuler implements Datenelement
     public boolean schluesselIstGleich(String s)
     {
         boolean b; 
-        b = true;
+        b = name.equals(s);
         return b;
     }
     

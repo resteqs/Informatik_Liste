@@ -17,4 +17,14 @@ else {
 return anfang.restlaengeGeben();
 }
 }
+public Datenelement suchen(String vergleichen)
+{
+    if ( anfang == null)
+    {
+     return null;   
+    }
+    else {
+    return anfang.suchen(vergleichen);
+    }
+}
 }

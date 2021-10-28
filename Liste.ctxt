@@ -4,4 +4,6 @@ comment1.params=
 comment1.target=Liste()
 comment2.params=
 comment2.target=int\ laengeGeben()
-numComments=3
+comment3.params=vergleichen
+comment3.target=Datenelement\ suchen(java.lang.String)
+numComments=4
