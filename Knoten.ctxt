@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Knoten
+comment1.params=d
+comment1.target=Knoten(Datenelement)
+comment2.params=d\ k
+comment2.target=Knoten(Datenelement,\ Knoten)
+comment3.params=
+comment3.target=int\ restlaengeGeben()
+numComments=4
