@@ -39,6 +39,25 @@ public class Knoten
             nachfolger = kneu; 
         }
     }
+    public Knoten einfuegenVor(Datenelement dneu, Datenelement vergleichswert)
+    {
+        if(delement!= vergleichswert)
+        {
+            if(nachfolger !=null)
+            {
+                nachfolger = nachfolger.einfuegenVor(dneu,vergleichswert);
+            }
+            else{
+                hintenEinfuegen(dneu);
+            }
+            return this;
+        }
+        else{
+        Knoten kneu;
+        kneu = new Knoten(dneu, this);
+        return kneu;
+        }
+    }
 
     public Datenelement suchen(String vergleichen)
     {

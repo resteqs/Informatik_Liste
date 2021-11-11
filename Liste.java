@@ -43,4 +43,14 @@ public void hintenEinfuegen(Datenelement d)
     vorneEinfuegen(d);
     }
 }
+public void einfuegenVor(Datenelement dneu, Datenelement vergleichswert)
+{
+    if(anfang!= null)
+    {
+        anfang = anfang.einfuegenVor(dneu, vergleichswert);
+    }
+    else{
+        vorneEinfuegen(dneu);
+    }
+}
 }
