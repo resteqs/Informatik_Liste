@@ -25,6 +25,20 @@ public class Knoten
             return nachfolger.restlaengeGeben() +1;
         }
     }
+    
+    public void hintenEinfuegen(Datenelement dneu)
+    {
+        if(nachfolger != dneu)
+        {
+            nachfolger.hintenEinfuegen(dneu);
+        }
+        else
+        {
+            Knoten kneu;
+            kneu = new Knoten(dneu, null);
+            nachfolger = kneu; 
+        }
+    }
 
     public Datenelement suchen(String vergleichen)
     {

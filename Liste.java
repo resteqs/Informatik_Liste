@@ -27,4 +27,20 @@ public Datenelement suchen(String vergleichen)
     return anfang.suchen(vergleichen);
     }
 }
+public void vorneEinfuegen(Datenelement dneu)
+{
+    Knoten kneu;
+    kneu =  new Knoten(dneu,anfang);
+    anfang= kneu;
+}
+public void hintenEinfuegen(Datenelement d)
+{
+    if(anfang!= null)
+    {
+    anfang.hintenEinfuegen(d);
+    }
+    else {
+    vorneEinfuegen(d);
+    }
+}
 }
