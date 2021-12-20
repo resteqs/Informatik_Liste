@@ -1,80 +1,77 @@
-
-public class Knoten
+public class Knoten extends Listenelement
 {
+    private Listenelement nachfolger;
     private Datenelement delement;
-    private Knoten nachfolger; 
-
     public Knoten(Datenelement d)
     {
+        super();
         delement = d;
-
+        nachfolger = new Abschluss();
     }
-    public Knoten(Datenelement d, Knoten k)
+    public Knoten(Datenelement d, Listenelement l)
     {
+        super();
         delement = d;
-        nachfolger = k; 
+        nachfolger = l;
     }
-
-    public int restlaengeGeben()
+    public int laengeGeben()
     {
-        if(nachfolger == null)
-        {
-            return 1;
-        }
-        else {
-            return nachfolger.restlaengeGeben() +1;
-        }
+        return nachfolger.laengeGeben() + 1;
     }
-    
-    public void hintenEinfuegen(Datenelement dneu)
+    public Datenelement endeGeben(Datenelement d)
     {
-        if(nachfolger != dneu)
+        return nachfolger.endeGeben(delement);
+    }
+    public Listenelement knotenEntfernen(Datenelement d)
+    {
+        if (d == delement)
         {
-            nachfolger.hintenEinfuegen(dneu);
+            return nachfolger;
         }
         else
         {
-            Knoten kneu;
-            kneu = new Knoten(dneu, null);
-            nachfolger = kneu; 
-        }
-    }
-    public Knoten einfuegenVor(Datenelement dneu, Datenelement vergleichswert)
-    {
-        if(delement!= vergleichswert)
-        {
-            if(nachfolger !=null)
-            {
-                nachfolger = nachfolger.einfuegenVor(dneu,vergleichswert);
-            }
-            else{
-                hintenEinfuegen(dneu);
-            }
+            nachfolger = nachfolger.knotenEntfernen(d);
             return this;
         }
-        else{
-        Knoten kneu;
-        kneu = new Knoten(dneu, this);
-        return kneu;
-        }
     }
-
-    public Datenelement suchen(String vergleichen)
+    public Listenelement hintenEinfuegen(Datenelement d)
     {
-        if (delement.schluesselIstGleich(vergleichen))
+        nachfolger = nachfolger.hintenEinfuegen(d);
+        return this;
+    }
+    public Datenelement suche(String schluessel)
+    {
+        if (delement.schluesselIstGleich(schluessel))
         {
             return delement;
         }
-        else {
-            if (nachfolger != null)
-            {
-                return nachfolger.suchen(vergleichen);
-            }
-            else 
-            {
-                return null;
-            }
-        }
+        return nachfolger.suche(schluessel);
     }
-
+    public Listenelement einfuegenVor(Datenelement dneu, Datenelement vergleichswert)
+    {
+        if (delement == vergleichswert)
+        {
+              Knoten k = new Knoten(dneu, this);
+              return k;
+        }
+        nachfolger = nachfolger.einfuegenVor(dneu,vergleichswert);
+        return this;
+    }
+    public Listenelement sortiertEinfuegen(Datenelement dneu){
+        if(delement.istKleinerAls(dneu)){
+            nachfolger = nachfolger.sortiertEinfuegen(dneu);
+            return this; 
+        }
+        else{
+            Knoten k = new Knoten(dneu, this);
+            return k;
+        }
+       
+    }
+    public Datenelement delementGeben(){
+        return delement;
+    }
+    public Listenelement nachfolgerGeben(){
+        return nachfolger;
+    }
 }
